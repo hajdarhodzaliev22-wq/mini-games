@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ardji — телефоны без слежки</title>
+    <meta name="description" content="Ardji — первый кнопочный телефон с тремя SIM-картами и ArdjiOS. Полная приватность, никакого Google, приложения от Ardji.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0c12;
+            color: #eef2ff;
+            line-height: 1.5;
+        }
+
+        /* Шапка */
+        .header {
+            position: sticky;
+            top: 0;
+            background: #0a0c12dd;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1e293b;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .nav a:hover {
+            color: #a855f7;
+        }
+
+        /* Кнопки */
+        .btn {
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #a855f7;
+            color: #a855f7;
+        }
+
+        .btn-outline:hover {
+            background: #a855f722;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Секции */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Карточки телефонов */
+        .phones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .phone-card {
+            background: #111827;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            width: 280px;
+            text-align: center;
+            border: 1px solid #1e293b;
+            transition: 0.2s;
+        }
+
+        .phone-card:hover {
+            border-color: #a855f7;
+            transform: translateY(-5px);
+        }
+
+        .phone-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .phone-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .badge {
+            background: #a855f722;
+            color: #a855f7;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Сетка приложений */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .app-item {
+            background: #111827;
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #1e293b;
+        }
+
+        /* Подвал */
+        .footer {
+            background: #05070a;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            margin-top: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: #64748b;
+            text-decoration: none;
+        }
+
+        /* Адаптив */
+        @media (max-width: 700px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<div class="header">
+    <div class="logo">⚡ ARDJI</div>
+    <div class="nav">
+        <a href="#">Главная</a>
+        <a href="#apps">Приложения</a>
+        <a href="#phones">Телефоны</a>
+        <a href="#shop">Магазин</a>
+        <a href="#support">Поддержка</a>
+    </div>
+    <a href="https://t.me/ardji_news" class="btn-outline btn" style="padding:0.5rem 1rem;">Telegram</a>
+</div>
+
+<!-- ГЛАВНЫЙ ЭКРАН -->
+<div class="hero">
+    <h1>Ardji — телефоны <span style="background:linear-gradient(135deg,#a855f7,#3b82f6); -webkit-background-clip:text; background-clip:text; color:transparent;">без слежки</span></h1>
+    <p>Три SIM-карты. Своя ОС ArdjiOS. Никакого Google. Только твоя приватность.</p>
+    <a href="#phones" class="btn">Выбрать телефон</a>
+    <a href="/download" class="btn-outline btn" style="margin-left:1rem;">Скачать ArdjiBrowser</a>
+</div>
+
+<!-- ТЕЛЕФОНЫ -->
+<div class="section" id="phones">
+    <h2 style="text-align:center; margin-bottom:2rem;">📱 Наши телефоны</h2>
+    <div class="phones">
+        <div class="phone-card">
+            <div class="phone-icon">📟</div>
+            <div class="badge">В продаже</div>
+            <h3>Ardji 1.0</h3>
+            <p>Кнопочный | 3 SIM | Монохромный экран</p>
+            <div class="phone-price">10 000 ₽</div>
+            <a href="https://ozon.ru" class="btn" style="width:100%; padding:0.5rem;">Купить на Ozon</a>
+        </div>
+        <div class="phone-card">
+            <div class="phone-icon">📱</div>
+            <div class="badge" style="background:#f59e0b22; color:#f59e0b;">Скоро</div>
+            <h3>Ardji 2.0</h3>
+            <p>Цветной IPS | Камера 8МП | USB-C</p>
+            <div class="phone-price">—</div>
+            <a href="#" class="btn-outline btn" style="width:100%; padding:0.5rem;">Узнать о старте</a>
+        </div>
+    </div>
+</div>
+
+<!-- ПРИЛОЖЕНИЯ ARDJI -->
+<div class="section" id="apps">
+    <h2 style="text-align:center; margin-bottom:0.5rem;">📦 Все приложения Ardji</h2>
+    <p style="text-align:center; color:#94a3b8; margin-bottom:2rem;">20+ приложений в ArdjiPlay. Без слежки. Без рекламы (почти).</p>
+    <div class="apps-grid" id="appsGrid"></div>
+</div>
+
+<!-- ARDJI MESSENGER -->
+<div class="section" style="background:#0f111a; border-radius:2rem; margin:2rem auto;">
+    <div style="display:flex; flex-wrap:wrap; gap:2rem; align-items:center; justify-content:space-between;">
+        <div>
+            <div class="badge" style="background:#10b98122; color:#10b981;">🌟 Главное</div>
+            <h2 style="font-size:2rem;">Ardji Messenger</h2>
+            <p style="color:#94a3b8; max-width:500px;">Сквозное шифрование, звонки, видеозвонки, боты, каналы, группы. Без слежки. Свой протокол.</p>
+            <div style="margin-top:1rem;">
+                <span>✅ Сквозное шифрование</span><br>
+                <span>✅ Голос / Видеозвонки</span><br>
+                <span>✅ Боты и реакции</span><br>
+                <span>✅ Админ-панель</span>
+            </div>
+            <a href="#" class="btn" style="margin-top:1.5rem; display:inline-block;">Скачать из ArdjiPlay</a>
+        </div>
+        <div style="background:#111827; padding:2rem; border-radius:2rem; text-align:center; min-width:200px;">
+            <div style="font-size:3rem;">💬</div>
+            <div>Системный чат ARDJI</div>
+            <div style="font-size:0.8rem; color:#64748b;">Коды подтверждения здесь</div>
+        </div>
+    </div>
+</div>
+
+<!-- МАГАЗИН / ЧЕХЛЫ -->
+<div class="section" id="shop">
+    <h2 style="text-align:center;">🛒 Аксессуары</h2>
+    <div class="phones" style="margin-top:2rem;">
+        <div class="phone-card">🧩 Чехол Ardji 1.0<br>500 ₽</div>
+        <div class="phone-card">🔋 Аккумулятор 18650<br>300 ₽</div>
+        <div class="phone-card">⚡ Зарядка TP4056<br>200 ₽</div>
+        <div class="phone-card">🔘 Набор кнопок (5 шт)<br>100 ₽</div>
+    </div>
+</div>
+
+<!-- ПОДДЕРЖКА -->
+<div class="section" id="support" style="text-align:center;">
+    <h2>❓ Поддержка Ardji</h2>
+    <p style="margin:1rem 0;">Чат в Telegram — быстрые ответы. Или напиши на почту.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://t.me/ardji_support" class="btn-outline btn">Telegram-чат</a>
+        <a href="mailto:support@ardji.com" class="btn-outline btn">support@ardji.com</a>
+    </div>
+</div>
+
+<!-- ПОДВАЛ -->
+<div class="footer">
+    <div class="logo" style="font-size:1.5rem;">⚡ ARDJI</div>
+    <div class="footer-links">
+        <a href="#">Главная</a>
+        <a href="#apps">Приложения</a>
+        <a href="#phones">Телефоны</a>
+        <a href="https://t.me/ardji_news">Telegram-канал</a>
+        <a href="https://github.com/ardji">GitHub</a>
+    </div>
+    <div style="margin-top:1rem; font-size:0.8rem; color:#475569;">
+        Ardji — телефоны без слежки. Никакого Google. Только твои правила.
+    </div>
+</div>
+
+<script>
+    // СПИСОК ВСЕХ ПРИЛОЖЕНИЙ ARDJI
+    const apps = [
+        "ArdjiPlay", "ArdjiGoogle", "ArdjiBrowser", "ArdjiTube",
+        "ArdjiCloud", "ArdjiClaude", "ArdjiMaps", "ArdjiMail",
+        "ArdjiNotes", "ArdjiDialer", "ArdjiMessages", "ArdjiCamera",
+        "ArdjiGallery", "ArdjiKeyboard", "ArdjiCalendar", "ArdjiPay",
+        "ArdjiSocial", "ArdjiMusic", "ArdjiVPN", "ArdjiBackup",
+        "ArdjiMessenger"
+    ];
+
+    const container = document.getElementById('appsGrid');
+    if(container) {
+        apps.forEach(name => {
+            const div = document.createElement('div');
+            div.className = 'app-item';
+            div.innerHTML = `<div style="font-size:1.8rem; margin-bottom:0.5rem;">📱</div><strong>${name}</strong>`;
+            container.appendChild(div);
+        });
+    }
+</script>
+</body>
+</html>
