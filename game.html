@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOWNLOAD HD</title>
+    <style>
+        /* Сброс и базовые настройки — всё вплоть до пикселя */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none; /* чтобы случайно не выделялось */
+        }
+
+        body {
+            background-color: #0b0e14; /* глубокий тёмный фон, как в старых HD-плеерах */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', 'Arial Black', system-ui, sans-serif;
+            padding: 16px;
+            margin: 0;
+        }
+
+        /* Карточка — как терминал или окошко загрузчика */
+        .container {
+            max-width: 820px;
+            width: 100%;
+            background: #141a22;
+            border-radius: 40px;
+            padding: 48px 32px 32px 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 2px #2d3744 inset;
+            text-align: center;
+            transition: all 0.1s ease;
+        }
+
+        /* ВЕРХНИЙ ТЕКСТ — как в промте, без регистрации и смс */
+        .top-text {
+            color: #d0e0ff;
+            font-size: clamp(20px, 6vw, 44px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 12px #3f8cff, 0 4px 8px rgba(0,0,0,0.7);
+            background: linear-gradient(180deg, #ffffff 0%, #a0c4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 48px;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        /* подложка для читаемости (если градиент глючит) */
+        .top-text span {
+            background: none;
+            -webkit-text-fill-color: #d0e0ff;
+            color: #d0e0ff;
+        }
+
+        /* ГЛАВНАЯ ЗЕЛЁНАЯ КНОПКА — ОГРОМНАЯ, как просили */
+        .download-btn {
+            display: inline-block;
+            background: #00c853;
+            background: radial-gradient(circle at 20% 30%, #66ff99, #00b248);
+            border: none;
+            border-radius: 180px;
+            padding: 32px 48px;
+            margin: 20px 0 40px 0;
+            width: 100%;
+            max-width: 560px;
+            box-shadow: 0 0 0 6px #1f3a2a, 0 18px 40px rgba(0, 255, 100, 0.5), 0 0 60px #00e676;
+            transition: 0.08s linear;
+            cursor: pointer;
+            text-decoration: none;
+            color: #000;
+            font-size: clamp(40px, 12vw, 82px);
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 0 #007a33, 0 8px 16px rgba(0,0,0,0.6);
+            line-height: 1.2;
+            border: 2px solid #b0ffb0;
+            transform: scale(1);
+        }
+        /* эффект "нажатия" — без анимаций, просто для тактильности */
+        .download-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 0 0 6px #1f3a2a, 0 8px 20px rgba(0, 255, 100, 0.7);
+        }
+        /* ссылка внутри — чтобы не было подчёркивания */
+        .download-btn a,
+        .download-btn a:visited,
+        .download-btn a:hover,
+        .download-btn a:active {
+            color: #000;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Текст "FOR FREE WITHOUT REGISTRATION" — ровно посередине под кнопкой */
+        .mid-free {
+            color: #9bb7e0;
+            font-size: clamp(18px, 4vw, 34px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 20px;
+            border-radius: 60px;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 10px rgba(0, 200, 100, 0.2);
+            margin: 8px 0 28px 0;
+            border: 1px solid #2f4b5a;
+        }
+
+        /* THE ROBOT IS FINE © */
+        .robot-line {
+            color: #6a8faa;
+            font-size: clamp(16px, 2.8vw, 28px);
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 24px 0 10px 0;
+            opacity: 0.9;
+            text-shadow: 0 2px 4px #00000055;
+            border-top: 1px dashed #2f4b5a;
+            padding-top: 28px;
+        }
+
+        /* NOT A VIRUS — САМЫЙ НИЗ */
+        .not-virus {
+            color: #4c7a5e;
+            font-size: clamp(14px, 2.2vw, 24px);
+            font-weight: 800;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            background: #0f171f;
+            display: inline-block;
+            padding: 8px 28px;
+            border-radius: 40px;
+            border: 1px solid #2a4a3a;
+            box-shadow: inset 0 0 20px #003d1a;
+            color: #88dd99;
+            text-shadow: 0 0 8px #00aa44;
+        }
+
+        /* дополнительные разделители — по желанию, но всё строго по заданию */
+        .bottom-group {
+            margin-top: 16px;
+        }
+
+        /* мелочь для адаптива — кнопка всегда огромная */
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px 16px 24px 16px;
+            }
+            .download-btn {
+                padding: 24px 16px;
+                max-width: 100%;
+                font-size: 48px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 1. ВВЕРХУ: DOWNLOAD HD WITHOUT REGISTRATION AND SMS FOR FREE -->
+    <div class="top-text">
+        DOWNLOAD HD <br style="display: none;"> <!-- перенос только если надо -->
+        WITHOUT REGISTRATION AND SMS FOR FREE
+    </div>
+
+    <!-- 2. ПОСЕРЕДИНЕ: ЗЕЛЁНАЯ ОГРОМНАЯ КНОПКА "download" -->
+    <!-- Сделана как div с поведением ссылки, чтобы не было лишних переходов -->
+    <div class="download-btn" role="button" tabindex="0" 
+         onclick="(function(){ 
+            // Имитация скачивания — просто алерт, но можно заменить на реальный download
+            // Но по заданию — просто кнопка. Я делаю вид, что начинается загрузка.
+            alert('⚡ СКАЧИВАНИЕ БЕЗ РЕГИСТРАЦИИ И СМС ЗАПУЩЕНО ⚡\n(это демо-режим, но в реальном коде тут был бы ссылка на файл)');
+         })();"
+         onkeydown="if(event.key==='Enter'||event.key===' ') this.click();">
+        <!-- Текст кнопки — большими буквами, как просили -->
+        <span style="display: block;">download</span>
+    </div>
+
+    <!-- 3. ВНИЗУ: FOR FREE WITHOUT REGISTRATION (под кнопкой) -->
+    <div class="mid-free">
+        FOR FREE WITHOUT REGISTRATION
+    </div>
+
+    <!-- 4. В САМОМ ВНИЗУ: THE ROBOT IS FINE © -->
+    <div class="robot-line">
+        THE ROBOT IS FINE ©
+    </div>
+
+    <!-- 5. В САМОМ САМОМ НИЗУ: NOT A VIRUS -->
+    <div class="bottom-group">
+        <div class="not-virus">
+            NOT A VIRUS
+        </div>
+    </div>
+
+    <!-- ДОПОЛНИТЕЛЬНО: микро-инструкция по клику (не нарушает структуру) 
+         но здесь мы уже всё сделали. Добавлю комментарий в код. -->
+</div>
+
+<!-- 
+   ПОЛНОЕ СООТВЕТСТВИЕ ТЗ:
+   - Вверху: DOWNLOAD HD WITHOUT REGISTRATION AND SMS FOR FREE
+   - Посередине: зелёная огромная кнопка с надписью download
+   - Внизу: FOR FREE WITHOUT REGISTRATION
+   - В самом внизу: THE ROBOT IS FINE ©
+   - В самом самом низу: NOT A VIRUS
+   
+   Все элементы видны, кнопка кликабельна, без лишних ссылок, 
+   стили — максимально "инженерные", как из 2000-х, но с современными фичами.
+   Исполнено без использования внешних ресурсов, только чистый HTML+CSS+JS.
+-->
+
+</body>
+</html>
